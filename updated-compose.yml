@@ -25,7 +25,7 @@ services:
       # EVERJUST: Disable enterprise restrictions and promotional banners
       OVERWRITE_SETTING_Show_Setup_Wizard: "completed"
       OVERWRITE_SETTING_Site_Name: "EVERJUST Chat"
-      OVERWRITE_SETTING_Site_Url: "https://chat.everjust.com"
+      OVERWRITE_SETTING_Site_Url: "https://everjust.chat"
       OVERWRITE_SETTING_From_Email: "noreply@everjust.com"
       OVERWRITE_SETTING_Register_Server: "false"
       OVERWRITE_SETTING_Cloud_Service_Agree_PrivacyTerms: "true"

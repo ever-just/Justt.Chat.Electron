@@ -1,0 +1,100 @@
+version: '3.8'
+
+services:
+  rocketchat:
+    image: rocketchat/rocket.chat:latest
+    restart: unless-stopped
+    environment:
+      MONGO_URL: mongodb://mongo:27017/rocketchat?replicaSet=rs0
+      MONGO_OPLOG_URL: mongodb://mongo:27017/local?replicaSet=rs0
+      ROOT_URL: https://everjust.chat
+      PORT: 3000
+      DEPLOY_METHOD: docker
+      # Uploads storage configuration
+      OVERWRITE_SETTING_FileUpload_Storage_Type: FileSystem
+      OVERWRITE_SETTING_FileUpload_FileSystemPath: /app/uploads
+      # Performance settings
+      NODE_ENV: production
+      # SendGrid Email Configuration
+      MAIL_URL: smtps://apikey:${SENDGRID_API_KEY}@smtp.sendgrid.net:465
+      OVERWRITE_SETTING_From_Email: support@everjust.com
+    depends_on:
+      mongo:
+        condition: service_healthy
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./uploads:/app/uploads
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/api/info"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+
+  mongo:
+    image: mongo:7.0
+    restart: unless-stopped
+    command: mongod --oplogSize 128 --replSet rs0 --storageEngine=wiredTiger
+    volumes:
+      - ./data/db:/data/db
+      - ./data/dump:/dump
+    environment:
+      MONGO_INITDB_DATABASE: rocketchat
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  mongo-init-replica:
+    image: mongo:7.0
+    command: >
+      bash -c "
+        # Wait for MongoDB to be ready
+        until mongosh --host mongo:27017 --eval 'print(\"waited for connection\")'; do
+          echo 'Waiting for MongoDB to be available...'
+          sleep 5
+        done
+
+        # Check if replica set is already initialized
+        if mongosh --host mongo:27017 --eval 'rs.status()' | grep -q 'no replset config has been received'; then
+          echo 'Initializing replica set...'
+          mongosh --host mongo:27017 --eval '
+            rs.initiate({
+              _id: \"rs0\",
+              members: [{ _id: 0, host: \"mongo:27017\", priority: 1 }]
+            })
+          '
+          echo 'Replica set initialized!'
+        else
+          echo 'Replica set already initialized'
+        fi
+      "
+    depends_on:
+      mongo:
+        condition: service_healthy
+
+# Optional: Backup service
+  backup:
+    image: mongo:7.0
+    profiles: ["backup"]
+    volumes:
+      - ./backups:/backups
+      - ./data/db:/data/db:ro
+    command: >
+      bash -c "
+        echo 'Starting backup...'
+        mongodump --host mongo:27017 --db rocketchat --archive=/backups/rocketchat-backup-$$(date +%Y%m%d-%H%M%S).archive
+        echo 'Backup completed!'
+        # Keep only last 7 days of backups
+        find /backups -name '*.archive' -mtime +7 -delete
+      "
+    depends_on:
+      mongo:
+        condition: service_healthy
+
+networks:
+  default:
+    driver: bridge

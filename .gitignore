@@ -1,20 +1,19 @@
-.DS_Store
-Thumbs.db
-*.log
+# Sensitive files
+.env
+*.env
+**/deploy-with-sendgrid.sh
+godaddy-dns-manager.sh
+setup-everjust-chat-dns.sh
 
-/.vscode
-/node_modules
+# API keys and secrets
+**/api-keys.txt
+**/secrets.txt
 
-/app
-/dist
-/Development.provisionprofile
+# Temporary files
+*.bak
+*.tmp
+update-domain.sh
 
-# yarn
-.pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/sdks
-!.yarn/versions
-supportedVersions.jwt
+# DNS records with sensitive data
+current_dns_records.json
+updated_dns_records.json
