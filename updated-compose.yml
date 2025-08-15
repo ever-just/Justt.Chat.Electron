@@ -1,0 +1,66 @@
+volumes:
+  mongodb_data: { driver: local }
+
+services:
+  rocketchat:
+    image: registry.rocket.chat/rocketchat/rocket.chat:${RELEASE:-latest}
+    restart: on-failure
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.rocketchat.rule: Host(`${DOMAIN}`)
+      traefik.http.routers.rocketchat.tls: "true"
+      traefik.http.routers.rocketchat.entrypoints: https
+      traefik.http.routers.rocketchat.tls.certresolver: le
+    environment:
+      MONGO_URL: "${MONGO_URL:-\
+        mongodb://${MONGODB_ADVERTISED_HOSTNAME:-mongodb}:${MONGODB_INITIAL_PRIMARY_PORT_NUMBER:-27017}/\
+        ${MONGODB_DATABASE:-rocketchat}?replicaSet=${MONGODB_REPLICA_SET_NAME:-rs0}}"
+      MONGO_OPLOG_URL: "${MONGO_OPLOG_URL:\
+        -mongodb://${MONGODB_ADVERTISED_HOSTNAME:-mongodb}:${MONGODB_INITIAL_PRIMARY_PORT_NUMBER:-27017}/\
+        local?replicaSet=${MONGODB_REPLICA_SET_NAME:-rs0}}"
+      ROOT_URL: ${ROOT_URL:-http://localhost:${HOST_PORT:-3000}}
+      PORT: ${PORT:-3000}
+      DEPLOY_METHOD: docker
+      DEPLOY_PLATFORM: ${DEPLOY_PLATFORM}
+      # EVERJUST: Disable enterprise restrictions and promotional banners
+      OVERWRITE_SETTING_Show_Setup_Wizard: "completed"
+      OVERWRITE_SETTING_Site_Name: "EVERJUST Chat"
+      OVERWRITE_SETTING_Site_Url: "https://chat.everjust.com"
+      OVERWRITE_SETTING_From_Email: "noreply@everjust.com"
+      OVERWRITE_SETTING_Register_Server: "false"
+      OVERWRITE_SETTING_Cloud_Service_Agree_PrivacyTerms: "true"
+      OVERWRITE_SETTING_Statistics_reporting: "false"
+      OVERWRITE_SETTING_Send_Statistics_ToRocketChat: "false"
+      OVERWRITE_SETTING_Apps_Framework_enabled: "true"
+      OVERWRITE_SETTING_Apps_Framework_Development_Mode: "true"
+      # File upload settings
+      OVERWRITE_SETTING_FileUpload_Storage_Type: "FileSystem"
+      OVERWRITE_SETTING_FileUpload_FileSystemPath: "/app/uploads"
+      OVERWRITE_SETTING_Message_MaxAllowedSize: "5000"
+      OVERWRITE_SETTING_FileUpload_MaxFileSize: "104857600"
+      # Custom branding
+      OVERWRITE_SETTING_Layout_Sidenav_Footer: ""
+      OVERWRITE_SETTING_Assets_SvgFavicon_Enable: "true"
+    depends_on:
+      - mongodb
+    expose:
+      - ${PORT:-3000}
+    ports:
+      - "${BIND_IP:-0.0.0.0}:${HOST_PORT:-3000}:${PORT:-3000}"
+    volumes:
+      - ./uploads:/app/uploads
+
+  mongodb:
+    image: docker.io/bitnami/mongodb:${MONGODB_VERSION:-5.0}
+    restart: on-failure
+    volumes:
+      - mongodb_data:/bitnami/mongodb
+    environment:
+      MONGODB_REPLICA_SET_MODE: primary
+      MONGODB_REPLICA_SET_NAME: ${MONGODB_REPLICA_SET_NAME:-rs0}
+      MONGODB_PORT_NUMBER: ${MONGODB_PORT_NUMBER:-27017}
+      MONGODB_INITIAL_PRIMARY_HOST: ${MONGODB_INITIAL_PRIMARY_HOST:-mongodb}
+      MONGODB_INITIAL_PRIMARY_PORT_NUMBER: ${MONGODB_INITIAL_PRIMARY_PORT_NUMBER:-27017}
+      MONGODB_ADVERTISED_HOSTNAME: ${MONGODB_ADVERTISED_HOSTNAME:-mongodb}
+      MONGODB_ENABLE_JOURNAL: ${MONGODB_ENABLE_JOURNAL:-true}
+      ALLOW_EMPTY_PASSWORD: ${ALLOW_EMPTY_PASSWORD:-yes}
