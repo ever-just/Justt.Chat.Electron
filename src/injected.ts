@@ -455,6 +455,46 @@ const start = async () => {
     }
   };
 
+  // Hide "Powered by Rocket.Chat Starter" footer
+  const hideRocketChatFooter = () => {
+    const style = document.createElement('style');
+    style.textContent = `
+      /* Hide the "Powered by Rocket.Chat Starter" footer */
+      .rcx-sidebar-footer,
+      .sidebar-footer,
+      [data-qa="sidebar-footer"],
+      .rc-old .sidebar .sidebar-footer,
+      .main-content .sidebar .sidebar-footer,
+      .sidebar-wrap .sidebar .sidebar-footer,
+      .rc-sidebar .rcx-sidebar-footer,
+      .rc-sidebar [class*="footer"],
+      .rc-sidebar footer,
+      .rcx-sidebar footer,
+      .sidebar [class*="powered"],
+      .sidebar [class*="starter"],
+      .rc-old .sidebar [class*="powered"],
+      .rc-old .sidebar [class*="starter"] {
+        display: none !important;
+        visibility: hidden !important;
+        height: 0 !important;
+        overflow: hidden !important;
+        opacity: 0 !important;
+      }
+    `;
+    document.head.appendChild(style);
+  };
+
+  // Apply immediately if DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', hideRocketChatFooter);
+  } else {
+    hideRocketChatFooter();
+  }
+
+  // Also apply after a delay to catch dynamically loaded content
+  setTimeout(hideRocketChatFooter, 1000);
+  setTimeout(hideRocketChatFooter, 3000);
+
   console.log('[Rocket.Chat Desktop] Injected');
 };
 
