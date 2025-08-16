@@ -17,3 +17,5 @@ update-domain.sh
 # DNS records with sensitive data
 current_dns_records.json
 updated_dns_records.json
+node_modules/
+deploy-with-password.sh

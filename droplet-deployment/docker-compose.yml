@@ -15,9 +15,11 @@ services:
       OVERWRITE_SETTING_FileUpload_FileSystemPath: /app/uploads
       # Performance settings
       NODE_ENV: production
-      # SendGrid Email Configuration
-      MAIL_URL: smtps://apikey:${SENDGRID_API_KEY}@smtp.sendgrid.net:465
+      # SendGrid Email Configuration (port 2525 to bypass DigitalOcean blocks)
+      MAIL_URL: smtp://apikey:${SENDGRID_API_KEY}@smtp.sendgrid.net:2525
       OVERWRITE_SETTING_From_Email: support@everjust.com
+      # Ensure invitation links use the correct domain
+      OVERWRITE_SETTING_Accounts_EmailVerification: "true"
       # EVERJUST: Disable enterprise restrictions and promotional banners
       OVERWRITE_SETTING_Show_Setup_Wizard: "completed"
       OVERWRITE_SETTING_Site_Name: "EVERJUST Chat"

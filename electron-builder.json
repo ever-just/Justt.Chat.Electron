@@ -1,10 +1,10 @@
 {
   "files": ["app/**/*", "package.json"],
   "extraResources": ["build/icon.ico", "servers.json"],
-  "appId": "chat.rocket",
+  "appId": "com.everjust.chat",
   "protocols": {
-    "name": "Rocket.Chat",
-    "schemes": ["rocketchat"]
+    "name": "EVERJUST Chat",
+    "schemes": ["everjustchat"]
   },
   "afterPack": "./build/afterPack.js",
   "mac": {
@@ -12,9 +12,9 @@
     "target": ["dmg", "pkg", "zip", "mas"],
     "icon": "build/icon.icns",
     "bundleVersion": "25072",
-    "helperBundleId": "chat.rocket.electron.helper",
+    "helperBundleId": "com.everjust.chat.helper",
     "type": "distribution",
-    "artifactName": "rocketchat-${version}-${os}.${ext}",
+    "artifactName": "everjust-chat-${version}-${os}.${ext}",
     "mergeASARs": false,
     "extendInfo": {
       "NSMicrophoneUsageDescription": "I need access to your microphone to record the audio you want to send.",

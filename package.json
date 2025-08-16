@@ -3,13 +3,13 @@
   "workspaces": [
     "workspaces/*"
   ],
-  "productName": "Rocket.Chat",
-  "name": "rocketchat",
-  "description": "Official OSX, Windows, and Linux Desktop Clients for Rocket.Chat",
+  "productName": "EVERJUST Chat",
+  "name": "everjust-chat",
+  "description": "EVERJUST Team Communication Platform - Desktop Client",
   "version": "4.8.0",
-  "author": "Rocket.Chat Support <support@rocket.chat>",
-  "copyright": "© 2016-2025, Rocket.Chat",
-  "homepage": "https://rocket.chat",
+  "author": "EVERJUST <company@everjust.com>",
+  "copyright": "© 2025, EVERJUST",
+  "homepage": "https://everjust.com",
   "license": "MIT",
   "goUrlShortener": "go.rocket.chat",
   "keywords": [
@@ -112,7 +112,7 @@
     "chokidar": "~3.5.3",
     "conventional-changelog-cli": "~4.1.0",
     "convert-svg-to-png": "~0.6.4",
-    "electron": "37.2.4",
+    "electron": "^37.2.4",
     "electron-builder": "26.0.3",
     "electron-devtools-installer": "^3.2.0",
     "electron-notarize": "^1.2.2",
@@ -143,10 +143,7 @@
   "engines": {
     "node": ">=22.17.1"
   },
-  "devEngines": {
-    "node": ">=22.17.1",
-    "yarn": ">=4.0.2"
-  },
+
   "resolutions": {
     "@fiahfy/icns-convert/sharp": "0.29.3",
     "@fiahfy/ico-convert/sharp": "0.29.3"

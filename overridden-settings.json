@@ -1,0 +1,11 @@
+{
+  "isReportEnabled": false,
+  "isInternalVideoChatWindowEnabled": true,
+  "isFlashFrameEnabled": true,
+  "isMinimizeOnCloseEnabled": false,
+  "doCheckForUpdatesOnStartup": false,
+  "isMenuBarEnabled": true,
+  "isTrayIconEnabled": true,
+  "isUpdatingEnabled": false,
+  "isAddNewServersEnabled": false
+}
