@@ -120,6 +120,7 @@ services:
       - XMPP_INTERNAL_MUC_DOMAIN=internal-muc.meet.jitsi
       - XMPP_SERVER=jitsi-prosody
       - JVB_AUTH_USER=jvb
+      - JVB_AUTH_PASSWORD=EverJust2025!
       - JVB_ENABLE_APIS=rest,colibri
       - JVB_STUN_SERVERS=meet-jit-si-turnrelay.jitsi.net:443
       - JVB_PORT=10000
@@ -150,6 +151,7 @@ services:
       - XMPP_SERVER=jitsi-prosody
       - JICOFO_COMPONENT_SECRET=s3cr3t
       - JICOFO_AUTH_USER=focus
+      - JICOFO_AUTH_PASSWORD=EverJust2025!
       - JVB_BREWERY_MUC=jvbbrewery
       - JIGASI_BREWERY_MUC=jigasibrewery
       - JIGASI_SIP_URI=test@sip2sip.info
