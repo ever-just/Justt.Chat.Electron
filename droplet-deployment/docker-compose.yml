@@ -36,6 +36,21 @@ services:
       # Custom branding - remove Rocket.Chat footer
       OVERWRITE_SETTING_Layout_Sidenav_Footer: ""
       OVERWRITE_SETTING_Assets_SvgFavicon_Enable: "true"
+      # Enable Jitsi conference calling (free alternative to premium VoIP)
+      OVERWRITE_SETTING_Jitsi_Enabled: "true"
+      OVERWRITE_SETTING_Jitsi_Domain: "meet.jit.si"
+      OVERWRITE_SETTING_Jitsi_URL_Room_Prefix: "RocketChat"
+      OVERWRITE_SETTING_Jitsi_Open_New_Window: "false"
+      OVERWRITE_SETTING_Jitsi_Enable_Channels: "true"
+      OVERWRITE_SETTING_Jitsi_Chrome_Extension: ""
+      # Disable premium VoIP restrictions
+      OVERWRITE_SETTING_VoIP_Enabled: "false"
+      OVERWRITE_SETTING_VoIP_Management_Server_Host: ""
+      # Enable WebRTC for direct peer-to-peer calls
+      OVERWRITE_SETTING_WebRTC_Enabled: "true"
+      OVERWRITE_SETTING_WebRTC_Enable_Channel: "true"
+      OVERWRITE_SETTING_WebRTC_Enable_Private: "true"
+      OVERWRITE_SETTING_WebRTC_Enable_Direct: "true"
     depends_on:
       mongo:
         condition: service_healthy
