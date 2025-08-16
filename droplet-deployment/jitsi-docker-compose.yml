@@ -55,6 +55,19 @@ services:
       - ENABLE_WELCOME_PAGE
       - ENABLE_CLOSE_PAGE
       - ENABLE_RECORDING
+      # Hide Jitsi branding and logos
+      - SHOW_JITSI_WATERMARK=false
+      - SHOW_WATERMARK_FOR_GUESTS=false
+      - SHOW_BRAND_WATERMARK=false
+      - BRAND_WATERMARK_LINK=""
+      - JITSI_WATERMARK_LINK=""
+      - DEFAULT_LOGO_URL=""
+      - DEFAULT_WELCOME_PAGE_LOGO_URL=""
+      # Custom branding for EVERJUST
+      - APP_NAME="EVERJUST Video Call"
+      - NATIVE_APP_NAME="EVERJUST"
+      - PROVIDER_NAME="EVERJUST"
+      - HIDE_INVITE_MORE_HEADER=true
       - ENABLE_REMB
       - ENABLE_REQUIRE_DISPLAY_NAME
       - ENABLE_SIMULCAST
