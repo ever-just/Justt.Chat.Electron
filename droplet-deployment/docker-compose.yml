@@ -43,14 +43,21 @@ services:
       OVERWRITE_SETTING_Jitsi_Open_New_Window: "false"
       OVERWRITE_SETTING_Jitsi_Enable_Channels: "true"
       OVERWRITE_SETTING_Jitsi_Chrome_Extension: ""
-      # Disable premium VoIP restrictions
+      # Set Jitsi as default conference provider
+      OVERWRITE_SETTING_VideoConf_Default_Provider: "jitsi"
+      # Completely disable premium VoIP/Omnichannel calling
       OVERWRITE_SETTING_VoIP_Enabled: "false"
       OVERWRITE_SETTING_VoIP_Management_Server_Host: ""
-      # Enable WebRTC for direct peer-to-peer calls
-      OVERWRITE_SETTING_WebRTC_Enabled: "true"
-      OVERWRITE_SETTING_WebRTC_Enable_Channel: "true"
-      OVERWRITE_SETTING_WebRTC_Enable_Private: "true"
-      OVERWRITE_SETTING_WebRTC_Enable_Direct: "true"
+      OVERWRITE_SETTING_Omnichannel_VoIP_Enabled: "false"
+      # Enable conference calling in all contexts
+      OVERWRITE_SETTING_VideoConf_Enable_DMs: "true"
+      OVERWRITE_SETTING_VideoConf_Enable_Channels: "true"
+      OVERWRITE_SETTING_VideoConf_Enable_Teams: "true"
+      # Disable WebRTC (deprecated) and force Jitsi
+      OVERWRITE_SETTING_WebRTC_Enabled: "false"
+      OVERWRITE_SETTING_WebRTC_Enable_Channel: "false"
+      OVERWRITE_SETTING_WebRTC_Enable_Private: "false"
+      OVERWRITE_SETTING_WebRTC_Enable_Direct: "false"
     depends_on:
       mongo:
         condition: service_healthy
