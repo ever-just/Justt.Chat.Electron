@@ -26,7 +26,7 @@ import {
   isServerUrlResolutionResult,
 } from './common';
 
-const REQUIRED_SERVER_VERSION_RANGE = '>=2.0.0';
+const REQUIRED_SERVER_VERSION_RANGE = '>=2.0.0 <=8.0.0';
 
 export const convertToURL = (input: string): URL => {
   let url: URL;

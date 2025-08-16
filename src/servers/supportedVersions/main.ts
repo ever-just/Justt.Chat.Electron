@@ -204,6 +204,12 @@ export const isServerVersionSupported = async (
   const exceptions = supportedVersionsData?.exceptions;
   const serverVersion = server.version;
   if (!serverVersion) return { supported: false };
+
+  // Temporary fix: Allow all Rocket.Chat versions >= 6.0
+  if (serverVersion && serverVersion.startsWith('6.')) {
+    return { supported: true };
+  }
+
   if (!versions) return { supported: false };
 
   const serverVersionTilde = `~${serverVersion
