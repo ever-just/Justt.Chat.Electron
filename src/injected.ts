@@ -455,11 +455,13 @@ const start = async () => {
     }
   };
 
-  // Hide "Powered by Rocket.Chat Starter" footer
-  const hideRocketChatFooter = () => {
+  // Hide ALL premium restrictions and branding
+  const hidePremiumRestrictions = () => {
     const style = document.createElement('style');
     style.textContent = `
-      /* Hide the "Powered by Rocket.Chat Starter" footer */
+      /* EVERJUST: Hide ALL premium restrictions and branding */
+      
+      /* Hide "Powered by Rocket.Chat Starter" footer */
       .rcx-sidebar-footer,
       .sidebar-footer,
       [data-qa="sidebar-footer"],
@@ -480,20 +482,111 @@ const start = async () => {
         overflow: hidden !important;
         opacity: 0 !important;
       }
+      
+      /* Hide ALL Premium badges */
+      .rcx-tag[children="Premium"],
+      .rcx-tag:contains("Premium"),
+      [class*="premium"],
+      [class*="Premium"],
+      .premium-badge,
+      .premium-tag,
+      .rcx-tag--featured,
+      .rcx-tag--secondary-danger,
+      .rcx-tag--secondary-info {
+        display: none !important;
+        visibility: hidden !important;
+      }
+      
+      /* Hide "See paid plan" buttons */
+      button:contains("See paid plan"),
+      [class*="paid-plan"],
+      [class*="upgrade"],
+      [class*="subscription"],
+      .rcx-button:contains("See paid plan"),
+      .rcx-button--secondary:contains("See paid plan") {
+        display: none !important;
+        visibility: hidden !important;
+      }
+      
+      /* Hide workspace registration warnings */
+      [class*="workspace-not-registered"],
+      [class*="registration-warning"],
+      .rcx-callout--warning:contains("Workspace not registered"),
+      .rcx-callout--danger:contains("Workspace not registered") {
+        display: none !important;
+        visibility: hidden !important;
+      }
+      
+      /* Force enable all toggles and inputs */
+      .rcx-field--disabled,
+      .rcx-toggle--disabled,
+      .rcx-button--disabled {
+        pointer-events: auto !important;
+        opacity: 1 !important;
+        cursor: pointer !important;
+      }
+      
+      /* Hide any premium restriction overlays */
+      .premium-overlay,
+      .upgrade-overlay,
+      .subscription-overlay,
+      [class*="premium-overlay"],
+      [class*="upgrade-overlay"] {
+        display: none !important;
+        visibility: hidden !important;
+      }
     `;
     document.head.appendChild(style);
+    
+    // Also remove premium badges with JavaScript
+    const removePremiumElements = () => {
+      // Remove Premium badges
+      document.querySelectorAll('.rcx-tag').forEach(tag => {
+        if (tag.textContent?.includes('Premium')) {
+          tag.remove();
+        }
+      });
+      
+      // Remove "See paid plan" buttons
+      document.querySelectorAll('button').forEach(button => {
+        if (button.textContent?.includes('See paid plan')) {
+          button.remove();
+        }
+      });
+      
+      // Enable disabled form elements
+      document.querySelectorAll('.rcx-field--disabled, .rcx-toggle--disabled, .rcx-button--disabled').forEach(element => {
+        element.classList.remove('rcx-field--disabled', 'rcx-toggle--disabled', 'rcx-button--disabled');
+      });
+    };
+    
+    // Run immediately and on DOM changes
+    removePremiumElements();
+    
+    // Watch for dynamic content changes
+    const observer = new MutationObserver(() => {
+      removePremiumElements();
+    });
+    
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      attributeFilter: ['class']
+    });
   };
 
   // Apply immediately if DOM is ready
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', hideRocketChatFooter);
+    document.addEventListener('DOMContentLoaded', hidePremiumRestrictions);
   } else {
-    hideRocketChatFooter();
+    hidePremiumRestrictions();
   }
 
   // Also apply after a delay to catch dynamically loaded content
-  setTimeout(hideRocketChatFooter, 1000);
-  setTimeout(hideRocketChatFooter, 3000);
+  setTimeout(hidePremiumRestrictions, 1000);
+  setTimeout(hidePremiumRestrictions, 3000);
+  setTimeout(hidePremiumRestrictions, 5000);
 
   console.log('[Rocket.Chat Desktop] Injected');
 };
