@@ -42,11 +42,11 @@ services:
       - DROPBOX_REDIRECT_URL
       - DYNAMIC_BRANDING_URL
       - ENABLE_AUDIO_PROCESSING
-      - ENABLE_AUTH
+      - ENABLE_AUTH=0
       - ENABLE_CALENDAR
       - ENABLE_FILE_RECORDING_SERVICE
       - ENABLE_FILE_RECORDING_SERVICE_SHARING
-      - ENABLE_GUESTS
+      - ENABLE_GUESTS=1
       - ENABLE_IPV6
       - ENABLE_LIPSYNC
       - ENABLE_NO_AUDIO_DETECTION
@@ -143,7 +143,7 @@ services:
     volumes:
       - ./jitsi-config/jicofo:/config:Z
     environment:
-      - ENABLE_AUTH=1
+      - ENABLE_AUTH=0
       - XMPP_DOMAIN=meet.jitsi
       - XMPP_AUTH_DOMAIN=auth.meet.jitsi
       - XMPP_INTERNAL_MUC_DOMAIN=internal-muc.meet.jitsi
@@ -173,8 +173,8 @@ services:
       - ./jitsi-config/prosody/config:/config:Z
       - ./jitsi-config/prosody/prosody-plugins-custom:/prosody-plugins-custom:Z
     environment:
-      - AUTH_TYPE=internal
-      - ENABLE_AUTH=1
+      - AUTH_TYPE=anonymous
+      - ENABLE_AUTH=0
       - ENABLE_GUESTS=1
       - GLOBAL_MODULES
       - GLOBAL_CONFIG
