@@ -31,7 +31,7 @@ services:
       OVERWRITE_SETTING_Apps_Framework_enabled: "true"
       OVERWRITE_SETTING_Apps_Framework_Development_Mode: "true"
       # Bypass enterprise license restrictions for layout customization
-      OVERWRITE_SETTING_Enterprise_License: "true"
+      OVERWRITE_SETTING_Enterprise_License: ""
       OVERWRITE_SETTING_Cloud_Workspace_Id: ""
       OVERWRITE_SETTING_Cloud_Workspace_Client_Id: ""
       OVERWRITE_SETTING_Cloud_Workspace_Client_Secret: ""
@@ -64,6 +64,7 @@ services:
       OVERWRITE_SETTING_Omnichannel_VoIP_Enabled: "false"
       # Fix Apps Engine startup issues
       EXIT_UNHANDLEDPROMISEREJECTION: "true"
+      # Fix license validation issues (already set above)
       # Enable conference calling in all contexts
       OVERWRITE_SETTING_VideoConf_Enable_DMs: "true"
       OVERWRITE_SETTING_VideoConf_Enable_Channels: "true"
