@@ -30,6 +30,17 @@ services:
       OVERWRITE_SETTING_Send_Statistics_ToRocketChat: "false"
       OVERWRITE_SETTING_Apps_Framework_enabled: "true"
       OVERWRITE_SETTING_Apps_Framework_Development_Mode: "true"
+      # Bypass enterprise license restrictions for layout customization
+      OVERWRITE_SETTING_Enterprise_License: "true"
+      OVERWRITE_SETTING_Cloud_Workspace_Id: ""
+      OVERWRITE_SETTING_Cloud_Workspace_Client_Id: ""
+      OVERWRITE_SETTING_Cloud_Workspace_Client_Secret: ""
+      OVERWRITE_SETTING_Cloud_Workspace_Registration_Client_Uri: ""
+      # Enable premium layout features
+      OVERWRITE_SETTING_Layout_Login_Hide_Logo: "true"
+      OVERWRITE_SETTING_Layout_Login_Hide_Title: "true" 
+      OVERWRITE_SETTING_Layout_Login_Hide_Powered_By: "true"
+      OVERWRITE_SETTING_Layout_Login_Template: "horizontal"
       # Enhanced file upload settings
       OVERWRITE_SETTING_Message_MaxAllowedSize: "5000"
       OVERWRITE_SETTING_FileUpload_MaxFileSize: "104857600"
