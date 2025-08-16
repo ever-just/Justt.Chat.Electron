@@ -24,18 +24,25 @@ services:
       OVERWRITE_SETTING_Show_Setup_Wizard: "completed"
       OVERWRITE_SETTING_Site_Name: "EVERJUST Chat"
       OVERWRITE_SETTING_Site_Url: "https://everjust.chat"
+      # COMPLETE ENTERPRISE RESTRICTION BYPASS - FULL OPEN SOURCE MODE
       OVERWRITE_SETTING_Register_Server: "false"
-      OVERWRITE_SETTING_Cloud_Service_Agree_PrivacyTerms: "true"
+      OVERWRITE_SETTING_Cloud_Service_Agree_PrivacyTerms: "false"
       OVERWRITE_SETTING_Statistics_reporting: "false"
       OVERWRITE_SETTING_Send_Statistics_ToRocketChat: "false"
       OVERWRITE_SETTING_Apps_Framework_enabled: "true"
       OVERWRITE_SETTING_Apps_Framework_Development_Mode: "true"
-      # Bypass enterprise license restrictions for layout customization
+      # Disable all enterprise license checks
       OVERWRITE_SETTING_Enterprise_License: ""
+      OVERWRITE_SETTING_Enterprise_License_Status: ""
+      OVERWRITE_SETTING_Enterprise_MaxActiveUsers: "999999"
       OVERWRITE_SETTING_Cloud_Workspace_Id: ""
       OVERWRITE_SETTING_Cloud_Workspace_Client_Id: ""
       OVERWRITE_SETTING_Cloud_Workspace_Client_Secret: ""
       OVERWRITE_SETTING_Cloud_Workspace_Registration_Client_Uri: ""
+      # Force disable all premium restrictions
+      OVERWRITE_SETTING_Accounts_TwoFactorAuthentication_MaxDelta: "3600"
+      OVERWRITE_SETTING_Enterprise_MaxRoomsPerGuest: "999999"
+      OVERWRITE_SETTING_Enterprise_MaxMonthlyActiveContacts: "999999"
       # Enable premium layout features
       OVERWRITE_SETTING_Layout_Login_Hide_Logo: "true"
       OVERWRITE_SETTING_Layout_Login_Hide_Title: "true"
@@ -65,9 +72,12 @@ services:
       # Fix Apps Engine startup issues
       EXIT_UNHANDLEDPROMISEREJECTION: "true"
       # Fix license validation issues (already set above)
-      # Remove premium feature restrictions from frontend (login settings already set above)
-      OVERWRITE_SETTING_Enterprise_MaxActiveUsers: "0"
-      OVERWRITE_SETTING_Enterprise_License_Status: "valid"
+      # Additional enterprise bypass settings
+      OVERWRITE_SETTING_Livechat_enabled: "true"
+      OVERWRITE_SETTING_Omnichannel_enabled: "true"
+      OVERWRITE_SETTING_LDAP_Enable: "false"
+      OVERWRITE_SETTING_SAML_Custom_Default: "false"
+      # Force enable all premium features without license validation
       # Enable conference calling in all contexts
       OVERWRITE_SETTING_VideoConf_Enable_DMs: "true"
       OVERWRITE_SETTING_VideoConf_Enable_Channels: "true"
