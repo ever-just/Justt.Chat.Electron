@@ -14,7 +14,7 @@ services:
       - ./jitsi-config/transcripts:/usr/share/jitsi-meet/transcripts:Z
     environment:
       - ENABLE_LETSENCRYPT=0
-      - ENABLE_HTTP_REDIRECT=1
+      - ENABLE_HTTP_REDIRECT=0
       - DISABLE_HTTPS=1
       - LETSENCRYPT_DOMAIN=meet.everjust.com
       - LETSENCRYPT_EMAIL=support@everjust.com
