@@ -38,7 +38,7 @@ services:
       OVERWRITE_SETTING_Cloud_Workspace_Registration_Client_Uri: ""
       # Enable premium layout features
       OVERWRITE_SETTING_Layout_Login_Hide_Logo: "true"
-      OVERWRITE_SETTING_Layout_Login_Hide_Title: "true" 
+      OVERWRITE_SETTING_Layout_Login_Hide_Title: "true"
       OVERWRITE_SETTING_Layout_Login_Hide_Powered_By: "true"
       OVERWRITE_SETTING_Layout_Login_Template: "horizontal"
       # Enhanced file upload settings
@@ -62,6 +62,8 @@ services:
       OVERWRITE_SETTING_VoIP_Enabled: "false"
       OVERWRITE_SETTING_VoIP_Management_Server_Host: ""
       OVERWRITE_SETTING_Omnichannel_VoIP_Enabled: "false"
+      # Fix Apps Engine startup issues
+      EXIT_UNHANDLEDPROMISEREJECTION: "true"
       # Enable conference calling in all contexts
       OVERWRITE_SETTING_VideoConf_Enable_DMs: "true"
       OVERWRITE_SETTING_VideoConf_Enable_Channels: "true"
