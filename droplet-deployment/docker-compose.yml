@@ -65,6 +65,9 @@ services:
       # Fix Apps Engine startup issues
       EXIT_UNHANDLEDPROMISEREJECTION: "true"
       # Fix license validation issues (already set above)
+      # Remove premium feature restrictions from frontend (login settings already set above)
+      OVERWRITE_SETTING_Enterprise_MaxActiveUsers: "0"
+      OVERWRITE_SETTING_Enterprise_License_Status: "valid"
       # Enable conference calling in all contexts
       OVERWRITE_SETTING_VideoConf_Enable_DMs: "true"
       OVERWRITE_SETTING_VideoConf_Enable_Channels: "true"
