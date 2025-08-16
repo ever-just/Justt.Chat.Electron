@@ -38,11 +38,13 @@ services:
       OVERWRITE_SETTING_Assets_SvgFavicon_Enable: "true"
       # Enable Jitsi conference calling (free alternative to premium VoIP)
       OVERWRITE_SETTING_Jitsi_Enabled: "true"
-      OVERWRITE_SETTING_Jitsi_Domain: "meet.jit.si"
-      OVERWRITE_SETTING_Jitsi_URL_Room_Prefix: "RocketChat"
+      OVERWRITE_SETTING_Jitsi_Domain: "meet.everjust.com"
+      OVERWRITE_SETTING_Jitsi_URL_Room_Prefix: "EverJust"
       OVERWRITE_SETTING_Jitsi_Open_New_Window: "false"
       OVERWRITE_SETTING_Jitsi_Enable_Channels: "true"
       OVERWRITE_SETTING_Jitsi_Chrome_Extension: ""
+      OVERWRITE_SETTING_Jitsi_SSL: "true"
+      OVERWRITE_SETTING_Jitsi_Prefer_H264: "true"
       # Set Jitsi as default conference provider
       OVERWRITE_SETTING_VideoConf_Default_Provider: "jitsi"
       # Completely disable premium VoIP/Omnichannel calling
