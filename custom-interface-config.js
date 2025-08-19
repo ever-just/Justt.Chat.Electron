@@ -23,7 +23,8 @@ var interfaceConfig = {
 
     CLOSE_PAGE_GUEST_HINT: false, // A html text to be shown to guests on the close page, false disables it
 
-    DEFAULT_BACKGROUND: '#040404',
+    DEFAULT_BACKGROUND: '#000000', // Pure black background
+    DEFAULT_LOGO_URL: '', // Remove logo completely
     DEFAULT_WELCOME_PAGE_LOGO_URL: '', // Remove default Jitsi logo
 
     DISABLE_DOMINANT_SPEAKER_INDICATOR: false,
@@ -159,3 +160,4 @@ var interfaceConfig = {
 };
 
 /* eslint-enable no-unused-vars, no-var, max-len */
+

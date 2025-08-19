@@ -67,6 +67,14 @@ services:
       - APP_NAME="EVERJUST Video Call"
       - NATIVE_APP_NAME="EVERJUST"
       - PROVIDER_NAME="EVERJUST"
+      # Custom Open Graph meta tags for invite previews
+      - OG_TITLE="EVERJUST Video Call"
+      - OG_DESCRIPTION="Join secure, high-quality video meetings with EVERJUST. Connect instantly with crystal-clear audio and video."
+      - OG_IMAGE="https://meet.everjust.com/images/everjust-meeting-preview.png"
+      - OG_SITE_NAME="EVERJUST"
+      # Custom logo URLs
+      - DEFAULT_LOGO_URL="images/everjust-logo.png"
+      - DEFAULT_WELCOME_PAGE_LOGO_URL="images/everjust-logo.png"
       - HIDE_INVITE_MORE_HEADER=true
       - ENABLE_REMB
       - ENABLE_REQUIRE_DISPLAY_NAME

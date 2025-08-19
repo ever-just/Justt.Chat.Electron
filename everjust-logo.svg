@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- EVERJUST Logo - Purple Cube with White Text -->
+  <defs>
+    <linearGradient id="cubeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#C084FC;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#A855F7;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- 3D Cube Shape -->
+  <path d="M50 60 L100 40 L150 60 L150 140 L100 160 L50 140 Z" fill="url(#cubeGradient)" stroke="none"/>
+  <path d="M50 60 L100 40 L100 120 L50 140 Z" fill="rgba(168,85,247,0.8)" stroke="none"/>
+  <path d="M100 40 L150 60 L150 140 L100 120 Z" fill="rgba(196,132,252,0.6)" stroke="none"/>
+  <path d="M50 60 L150 60 L100 40 Z" fill="rgba(196,132,252,0.9)" stroke="none"/>
+  
+  <!-- EVERJUST Text -->
+  <text x="100" y="85" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white" text-anchor="middle">EVER</text>
+  <text x="100" y="105" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white" text-anchor="middle">JUST</text>
+</svg>
