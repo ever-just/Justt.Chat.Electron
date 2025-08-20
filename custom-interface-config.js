@@ -8,7 +8,7 @@
  */
 
 var interfaceConfig = {
-    APP_NAME: 'EVERJUST Video Call',
+    APP_NAME: 'EVERJUST MEET',
     AUDIO_LEVEL_PRIMARY_COLOR: 'rgba(255,255,255,0.4)',
     AUDIO_LEVEL_SECONDARY_COLOR: 'rgba(255,255,255,0.2)',
 

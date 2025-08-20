@@ -64,8 +64,8 @@ services:
       - DEFAULT_LOGO_URL=""
       - DEFAULT_WELCOME_PAGE_LOGO_URL=""
       # Custom branding for EVERJUST
-      - APP_NAME="EVERJUST Video Call"
-      - NATIVE_APP_NAME="EVERJUST"
+      - APP_NAME="EVERJUST MEET"
+      - NATIVE_APP_NAME="EVERJUST MEET"
       - PROVIDER_NAME="EVERJUST"
       # Custom Open Graph meta tags for invite previews
       - OG_TITLE="EVERJUST Video Call"
